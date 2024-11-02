@@ -19,7 +19,9 @@ public enum CriteriaOperator implements Serializable {
     LESS_THAN(10, "Küçüktür"),
     LESS_THAN_OR_EQUAL(11, "Küçüktür veya eşittir"),
     OR(12, "Veya (Konulduğu yeri 2 ye Böler) (key ve values önemsizdir)"),
-    PARENTHES(13, "Sub Criteria");
+    PARENTHES(13, "Sub Criteria"),
+    IN(14, "Birden fazla OR değeri"),
+    NOT_IN(15, "Birden fazla NOT OR değeri");
 
     private int value = -1;
     private String meaning;

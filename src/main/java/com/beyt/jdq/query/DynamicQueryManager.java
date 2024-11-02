@@ -63,6 +63,8 @@ public class DynamicQueryManager {
         specificationRuleMap.put(CriteriaOperator.LESS_THAN_OR_EQUAL, new SpecificationFilterLessThanOrEqualToRule());
         specificationRuleMap.put(CriteriaOperator.OR, null);
         specificationRuleMap.put(CriteriaOperator.PARENTHES, null);
+        specificationRuleMap.put(CriteriaOperator.IN, new SpecificationFilterInRule());
+        specificationRuleMap.put(CriteriaOperator.NOT_IN, new SpecificationFilterNotInRule());
     }
 
     public static <Entity> List<Entity> findAll(JpaSpecificationExecutor<Entity> repositoryExecutor,
