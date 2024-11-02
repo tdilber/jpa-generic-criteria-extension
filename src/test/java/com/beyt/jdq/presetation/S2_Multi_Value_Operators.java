@@ -66,4 +66,23 @@ public class S2_Multi_Value_Operators extends BaseTestInstance {
         List<Course> courseList = courseRepository.findAll(criteriaList);
         PresentationUtil.prettyPrint(courseList);
     }
+
+    @Test
+    public void in() {
+        var criteriaList = CriteriaList.of(Criteria.of(Course.Fields.name, CriteriaOperator.IN, "Calculus I", "Calculus II"));
+        PresentationUtil.prettyPrint(criteriaList);
+        List<Course> courseList = courseRepository.findAll(criteriaList);
+        PresentationUtil.prettyPrint(courseList);//2,3
+        assertEquals(List.of(course2, course3), courseList);
+    }
+
+    @Test
+    public void notIn() {
+        var criteriaList = CriteriaList.of(Criteria.of(Course.Fields.name, CriteriaOperator.NOT_IN, "Calculus I", "Calculus II"));
+        PresentationUtil.prettyPrint(criteriaList);
+        List<Course> courseList = courseRepository.findAll(criteriaList);
+        PresentationUtil.prettyPrint(courseList);//1,4,5,6,7,8,9,10
+        assertEquals(Arrays.asList(course1, course4, course5, course6, course7, course8, course9, course10), courseList);
+    }
+
 }
